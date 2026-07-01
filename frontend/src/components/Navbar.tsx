@@ -66,7 +66,7 @@ export function Navbar({ status, currency, onCurrencyChange }: NavbarProps) {
             >
               {CURRENCIES.map((c) => (
                 <option key={c.code} value={c.code} className="bg-zinc-900 text-zinc-300">
-                  {c.symbol} {c.code}
+                  {c.flag} {c.symbol} {c.code}
                 </option>
               ))}
             </select>
