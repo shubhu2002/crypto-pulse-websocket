@@ -13,7 +13,7 @@ This project teaches WebSocket concepts by building something real. Each concept
 | Concept | Where in Code | PDF Chapter |
 |---------|--------------|-------------|
 | Browser WebSocket API (`new WebSocket`, events) | `frontend/src/hooks/useWebSocket.ts` | Ch 6 |
-| Server-side WebSocket with `ws` library | `ws-server/src/server.ts` (lines 50-90) | Ch 7 |
+| Server-side WebSocket with `ws` library | `ws-server/src/app.ts` | Ch 7 |
 | Express + WebSocket integration | `ws-server/src/server.ts` (HTTP + WSS on same server) | Ch 7 |
 | Broadcast pattern (one-to-many) | `broadcast()` function in server | Ch 7 |
 | Reconnection with exponential backoff + jitter | `useWebSocket.ts` onclose handler | Ch 9 |
@@ -100,32 +100,48 @@ This project teaches WebSocket concepts by building something real. Each concept
 ## Project Structure
 
 ```
-multi-coin-dashboard/
-├── ws-server/                    # Backend — Express + ws
+crypto-pulse-websocket/
+├── ws-server/                        # Backend — Express + ws
 │   ├── src/
-│   │   └── server.ts             # All server logic in one file
+│   │   ├── app.ts                    # Server logic + Binance connection
+│   │   ├── data.ts                   # Coin data & configuration
+│   │   └── types/
+│   │       └── index.ts              # Server-side type definitions
 │   ├── package.json
 │   └── tsconfig.json
 │
-├── frontend/                     # Frontend — Next.js + TypeScript
+├── frontend/                         # Frontend — Next.js + TypeScript
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── layout.tsx        # Root layout (dark mode)
-│   │   │   ├── page.tsx          # Entry point → Dashboard
-│   │   │   └── globals.css       # Tailwind base
+│   │   │   ├── layout.tsx            # Root layout (dark mode)
+│   │   │   ├── page.tsx              # Entry point → Dashboard
+│   │   │   ├── globals.css           # Tailwind base
+│   │   │   └── docs/
+│   │   │       └── page.tsx          # Documentation page
 │   │   ├── components/
-│   │   │   ├── Dashboard.tsx     # Main layout + state
-│   │   │   ├── CoinCard.tsx      # Individual coin tile with sparkline
-│   │   │   ├── DetailChart.tsx   # Large chart for selected coin
-│   │   │   ├── SparklineChart.tsx# Mini inline chart (recharts)
-│   │   │   └── StatusBadge.tsx   # Connection status indicator
+│   │   │   ├── Dashboard.tsx         # Main layout + state
+│   │   │   ├── CoinCard.tsx          # Individual coin tile with sparkline
+│   │   │   ├── CoinIcon.tsx          # Crypto coin icon component
+│   │   │   ├── DetailChart.tsx       # Large chart for selected coin
+│   │   │   ├── Logo.tsx              # App logo component
+│   │   │   ├── MarketOverview.tsx    # Market summary section
+│   │   │   ├── Navbar.tsx            # Navigation bar
+│   │   │   ├── SparklineChart.tsx    # Mini inline chart (recharts)
+│   │   │   ├── StatusBadge.tsx       # Connection status indicator
+│   │   │   └── docs-page/           # Docs page components
+│   │   │       ├── index.tsx         # Docs page root
+│   │   │       ├── tabs.tsx          # Tab navigation
+│   │   │       └── guideTab.tsx      # WebSocket guide tab content
 │   │   ├── hooks/
-│   │   │   └── useWebSocket.ts   # WebSocket hook (connect, reconnect, history)
+│   │   │   ├── useWebSocket.ts       # WebSocket hook (connect, reconnect, history)
+│   │   │   └── useHistoricalData.ts  # Historical price data fetching
 │   │   └── lib/
-│   │       └── types.ts          # Shared TypeScript types + coin metadata
+│   │       ├── types.ts              # Shared TypeScript types + coin metadata
+│   │       └── currency.ts           # Currency formatting utilities
+│   ├── next.config.ts
 │   └── package.json
 │
-└── README.md                     # ← You are here
+└── README.md                         # ← You are here
 ```
 
 ---
@@ -136,8 +152,8 @@ multi-coin-dashboard/
 
 ```bash
 cd ws-server
-npm install
-npm start          # Runs on port 4000
+yarn install
+yarn dev          # Runs on port 4000
 ```
 
 You should see:
@@ -151,8 +167,8 @@ WebSocket endpoint:  ws://localhost:4000/ws
 
 ```bash
 cd frontend
-npm install
-npm run dev        # Runs on port 3000
+pnpm install
+pnpm run dev        # Runs on port 3000
 ```
 
 ### 3. Open http://localhost:3000
@@ -172,11 +188,7 @@ You'll see 12 coins streaming live prices with sparkline charts. Click any coin 
 | XRP | XRP | XRPUSDT |
 | BNB | BNB | BNBUSDT |
 | Cardano | ADA | ADAUSDT |
-| Avalanche | AVAX | AVAXUSDT |
-| Polkadot | DOT | DOTUSDT |
-| Polygon | MATIC | MATICUSDT |
-| Chainlink | LINK | LINKUSDT |
-| NEAR | NEAR | NEARUSDT |
+| Gold(PAXG) | PAXG | PAXGUSDT |
 
 ---
 
