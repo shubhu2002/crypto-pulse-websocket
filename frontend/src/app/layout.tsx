@@ -13,8 +13,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Crypto Dashboard — Live WebSocket Prices",
-  description: "Multi-coin real-time dashboard powered by WebSockets",
+  title: "CryptoPulse — Live WebSocket Prices",
+  description:
+    "Real-time multi-coin crypto dashboard powered by WebSockets. Track Bitcoin, Ethereum and more with live price charts, sparklines, and instant alerts.",
+  keywords: [
+    "crypto",
+    "bitcoin",
+    "ethereum",
+    "websocket",
+    "real-time",
+    "dashboard",
+    "cryptocurrency",
+    "live prices",
+  ],
+  authors: [{ name: "CryptoPulse" }],
+  openGraph: {
+    title: "CryptoPulse — Live WebSocket Prices",
+    description:
+      "Real-time multi-coin crypto dashboard powered by WebSockets.",
+    type: "website",
+    siteName: "CryptoPulse",
+  },
+  twitter: {
+    card: "summary",
+    title: "CryptoPulse — Live WebSocket Prices",
+    description:
+      "Real-time multi-coin crypto dashboard powered by WebSockets.",
+  },
 };
 
 export default function RootLayout({
