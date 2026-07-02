@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/immutability */
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
@@ -52,7 +53,7 @@ export function useWebSocket() {
 			}
 		};
 
-		ws.onclose = (event) => {
+		ws.onclose = () => {
 			setStatus('disconnected');
 			const base = Math.min(1000 * 2 ** retriesRef.current, 30000);
 			const jitter = Math.random() * 1000;

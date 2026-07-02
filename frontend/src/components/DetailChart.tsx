@@ -116,7 +116,7 @@ export function DetailChart({ tick, history: liveHistory, currency }: DetailChar
                 { label: "24h Low", value: formatPrice(tick.low24h, currency), color: "text-red-400" },
                 { label: "Volume", value: formatVolume(tick.volume24h), color: "text-blue-400" },
               ].map((s) => (
-                <div key={s.label} className="rounded-lg bg-white/[0.03] border border-white/[0.04] px-2.5 py-1.5 text-center">
+                <div key={s.label} className="rounded-lg bg-white/3 border border-white/4 px-2.5 py-1.5 text-center">
                   <div className="text-[9px] text-zinc-600 mb-0.5">{s.label}</div>
                   <div className={`text-[11px] font-semibold ${s.color}`}>{s.value}</div>
                 </div>
@@ -126,14 +126,14 @@ export function DetailChart({ tick, history: liveHistory, currency }: DetailChar
         </div>
 
         {/* Period filter */}
-        <div className="flex items-center gap-1 mb-3 p-0.5 rounded-lg bg-white/[0.02] border border-white/[0.04] w-fit">
+        <div className="flex items-center gap-1 mb-3 p-0.5 rounded-lg bg-white/2 border border-white/4 w-fit">
           {PERIODS.map((p) => (
             <button
               key={p.key}
               onClick={() => setPeriod(p.key)}
               className={`px-3 py-1 rounded-md text-[11px] font-medium transition-all ${
                 period === p.key
-                  ? "bg-white/[0.08] text-zinc-100"
+                  ? "bg-white/8 text-zinc-100"
                   : "text-zinc-600 hover:text-zinc-400"
               }`}
             >
@@ -142,11 +142,11 @@ export function DetailChart({ tick, history: liveHistory, currency }: DetailChar
           ))}
         </div>
 
-        <div className="h-64 rounded-xl bg-black/20 border border-white/[0.03] p-2">
+        <div className="h-64 rounded-xl bg-black/20 border border-white/3 p-2">
           {loading ? (
             <div className="flex h-full items-center justify-center">
               <div className="text-center">
-                <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/[0.03] mb-2">
+                <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/3 mb-2">
                   <div className="h-3 w-3 rounded-full border-2 border-zinc-700 border-t-zinc-500 animate-spin" />
                 </div>
                 <p className="text-xs text-zinc-600">Loading historical data...</p>
@@ -155,7 +155,7 @@ export function DetailChart({ tick, history: liveHistory, currency }: DetailChar
           ) : chartData.length < 3 ? (
             <div className="flex h-full items-center justify-center">
               <div className="text-center">
-                <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/[0.03] mb-2">
+                <div className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/3 mb-2">
                   <div className="h-3 w-3 rounded-full border-2 border-zinc-700 border-t-zinc-500 animate-spin" />
                 </div>
                 <p className="text-xs text-zinc-600">Collecting price data...</p>

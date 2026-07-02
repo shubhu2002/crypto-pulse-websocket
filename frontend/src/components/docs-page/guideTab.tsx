@@ -47,7 +47,7 @@ export function GuideTab() {
 						className={`px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all ${
 							chapter === ch ?
 								'bg-violet-500/15 text-violet-300 border border-violet-500/30'
-							:	'bg-white/[0.03] text-zinc-500 border border-white/[0.04] hover:text-zinc-300 hover:bg-white/[0.05]'
+							:	'bg-white/3 text-zinc-500 border border-white/4 hover:text-zinc-300 hover:bg-white/5'
 						}`}
 					>
 						{ch}
@@ -171,10 +171,10 @@ function Ch1() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Use case
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								What flows over the socket
 							</th>
 						</tr>
@@ -208,7 +208,7 @@ function Ch1() {
 						].map(([uc, desc]) => (
 							<tr
 								key={uc}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs font-medium text-zinc-300'>
 									{uc}
@@ -294,16 +294,16 @@ function Ch2() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Technique
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Direction
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Latency
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Overhead/msg
 							</th>
 						</tr>
@@ -337,7 +337,7 @@ function Ch2() {
 						].map(([t, d, l, o]) => (
 							<tr
 								key={t}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs font-medium text-zinc-300'>
 									{t}
@@ -371,19 +371,19 @@ function Ch3() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Scheme
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Meaning
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Default port
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr className='border-b border-white/[0.02]'>
+						<tr className='border-b border-white/2'>
 							<td className='p-3 text-xs font-mono text-emerald-400'>
 								ws://
 							</td>
@@ -437,10 +437,10 @@ function Ch3() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Term
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Meaning
 							</th>
 						</tr>
@@ -478,7 +478,7 @@ function Ch3() {
 						].map(([term, meaning]) => (
 							<tr
 								key={term}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs font-medium text-zinc-300'>
 									{term}
@@ -586,13 +586,13 @@ function Ch5() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Opcode
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Name
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Meaning
 							</th>
 						</tr>
@@ -624,7 +624,7 @@ function Ch5() {
 						].map(([code, name, meaning]) => (
 							<tr
 								key={code}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs font-mono text-violet-400'>
 									{code}
@@ -657,10 +657,10 @@ function Ch5() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Code
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Meaning
 							</th>
 						</tr>
@@ -685,7 +685,7 @@ function Ch5() {
 						].map(([code, meaning]) => (
 							<tr
 								key={code}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs font-mono text-violet-400'>
 									{code}
@@ -738,13 +738,13 @@ function Ch6() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Constant
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Value
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Meaning
 							</th>
 						</tr>
@@ -762,7 +762,7 @@ function Ch6() {
 						].map(([c, v, m]) => (
 							<tr
 								key={c}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs font-mono text-emerald-400'>
 									{c}
@@ -1049,10 +1049,10 @@ function Ch11() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Control
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Why
 							</th>
 						</tr>
@@ -1090,7 +1090,7 @@ function Ch11() {
 						].map(([c, w]) => (
 							<tr
 								key={c}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs font-medium text-zinc-300'>
 									{c}
@@ -1146,13 +1146,13 @@ function Ch12() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Library
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								What it adds
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Trade-off
 							</th>
 						</tr>
@@ -1187,7 +1187,7 @@ function Ch12() {
 						].map(([lib, adds, tradeoff]) => (
 							<tr
 								key={lib}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs font-medium text-zinc-300'>
 									{lib}
@@ -1209,10 +1209,10 @@ function Ch12() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Need
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Best fit
 							</th>
 						</tr>
@@ -1229,7 +1229,7 @@ function Ch12() {
 						].map(([need, fit]) => (
 							<tr
 								key={need}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs text-zinc-300'>
 									{need}
@@ -1306,13 +1306,13 @@ function Ch14() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Pitfall
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Symptom
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Fix
 							</th>
 						</tr>
@@ -1372,7 +1372,7 @@ function Ch14() {
 						].map(([pitfall, symptom, fix]) => (
 							<tr
 								key={pitfall}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs font-medium text-red-400'>
 									{pitfall}
@@ -1423,10 +1423,10 @@ function Ch15() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Thing
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Value
 							</th>
 						</tr>
@@ -1455,7 +1455,7 @@ function Ch15() {
 						].map(([thing, value]) => (
 							<tr
 								key={thing}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs text-zinc-300'>
 									{thing}

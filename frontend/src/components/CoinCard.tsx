@@ -17,7 +17,7 @@ interface CoinCardProps {
   currency: Currency;
 }
 
-export function CoinCard({ tick, history: _liveHistory, rank, isSelected, onSelect, currency }: CoinCardProps) {
+export function CoinCard({ tick, rank, isSelected, onSelect, currency }: CoinCardProps) {
   const meta = COIN_META[tick.symbol] ?? { name: tick.symbol, color: "#888" };
   const isPositive = tick.change24h >= 0;
   const { data: allTimeData } = useHistoricalData(tick.symbol, "ALL");
@@ -34,8 +34,8 @@ export function CoinCard({ tick, history: _liveHistory, rank, isSelected, onSele
       onClick={onSelect}
       className={`group relative w-full text-left overflow-hidden rounded-2xl transition-all duration-300 ${
         isSelected
-          ? "glass border-white/[0.1] shadow-xl shadow-black/30 scale-[1.02]"
-          : "glass glass-hover border-white/[0.04]"
+          ? "glass border-white/1 shadow-xl shadow-black/30 scale-[1.02]"
+          : "glass glass-hover border-white/4"
       }`}
     >
       <div
@@ -83,7 +83,7 @@ export function CoinCard({ tick, history: _liveHistory, rank, isSelected, onSele
           <SparklineChart data={sparkData} color={meta.color} isPositive={isPositive} highlightLast />
         </div>
 
-        <div className="flex justify-between text-[10px] text-zinc-600 border-t border-white/[0.04] pt-2">
+        <div className="flex justify-between text-[10px] text-zinc-600 border-t border-white/4 pt-2">
           <span>H <span className="text-zinc-500">{formatPrice(tick.high24h, currency)}</span></span>
           <span>L <span className="text-zinc-500">{formatPrice(tick.low24h, currency)}</span></span>
           <span>V <span className="text-zinc-500">{formatVolume(tick.volume24h)}</span></span>

@@ -16,7 +16,7 @@ const Documentation = () => {
 	const [activeTab, setActiveTab] = useState<Tab>('Overview');
 	return (
 		<div className='min-h-screen mesh-gradient noise-bg'>
-			<header className='sticky top-0 z-50 border-b border-white/[0.04] bg-[#050507]/70 backdrop-blur-2xl'>
+			<header className='sticky top-0 z-50 border-b border-white/4 bg-[#050507]/70 backdrop-blur-2xl'>
 				<div className='px-10 h-16 flex items-center justify-between'>
 					<Link
 						href='/'
@@ -41,7 +41,7 @@ const Documentation = () => {
 
 			<div className='relative z-10 flex px-6 mt-2'>
 				{/* Sidebar */}
-				<aside className='hidden lg:flex flex-col w-48 shrink-0 sticky top-12 h-[calc(100vh-3rem)] py-4 px-3 border-r border-white/[0.04] overflow-y-auto'>
+				<aside className='hidden lg:flex flex-col w-48 shrink-0 sticky top-12 h-[calc(100vh-3rem)] py-4 px-3 border-r border-white/4 overflow-y-auto'>
 					<nav className='space-y-1 flex-1'>
 						{TABS.map((tab) => {
 							const icons: Record<Tab, React.ReactNode> = {
@@ -96,8 +96,8 @@ const Documentation = () => {
 									onClick={() => setActiveTab(tab)}
 									className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] font-medium transition-all text-left ${
 										activeTab === tab ?
-											'bg-white/[0.08] text-zinc-100 shadow-sm border border-white/[0.06]'
-										:	'text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.03]'
+											'bg-white/8 text-zinc-100 shadow-sm border border-white/6'
+										:	'text-zinc-500 hover:text-zinc-300 hover:bg-white/3'
 									}`}
 								>
 									<span
@@ -116,12 +116,12 @@ const Documentation = () => {
 					</nav>
 
 					{/* Bottom section */}
-					<div className='mt-auto pt-6 border-t border-white/[0.04] space-y-3'>
+					<div className='mt-auto pt-6 border-t border-white/4 space-y-3'>
 						<a
 							href='https://github.com/example-user/cryptopulse'
 							target='_blank'
 							rel='noopener noreferrer'
-							className='flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.03] transition-all'
+							className='flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-zinc-500 hover:text-zinc-300 hover:bg-white/3 transition-all'
 						>
 							<svg
 								className='h-4 w-4'
@@ -142,15 +142,15 @@ const Documentation = () => {
 				</aside>
 
 				{/* Mobile tab bar */}
-				<div className='flex items-center gap-1 mb-6 p-1 rounded-xl bg-white/[0.02] border border-white/[0.04] w-fit lg:hidden'>
+				<div className='flex items-center gap-1 mb-6 p-1 rounded-xl bg-white/2 border border-white/4 w-fit lg:hidden'>
 					{TABS.map((tab) => (
 						<button
 							key={tab}
 							onClick={() => setActiveTab(tab)}
 							className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
 								activeTab === tab ?
-									'bg-white/[0.08] text-zinc-100 shadow-sm'
-								:	'text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.03]'
+									'bg-white/8 text-zinc-100 shadow-sm'
+								:	'text-zinc-500 hover:text-zinc-300 hover:bg-white/3'
 							}`}
 						>
 							{tab}

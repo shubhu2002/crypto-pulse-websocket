@@ -85,7 +85,7 @@ export function Dashboard() {
                 <h2 className="text-xs font-medium text-zinc-500 uppercase tracking-wider">
                   All Assets
                 </h2>
-                <span className="text-[10px] text-zinc-700 bg-white/[0.03] px-2 py-0.5 rounded-full">
+                <span className="text-[10px] text-zinc-700 bg-white/3 px-2 py-0.5 rounded-full">
                   {sortedCoins.length}
                 </span>
               </div>
@@ -97,7 +97,7 @@ export function Dashboard() {
                     placeholder="Search coins..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="h-8 w-44 rounded-lg bg-white/[0.03] border border-white/[0.06] px-3 pl-8 text-xs text-zinc-300 placeholder:text-zinc-700 focus:outline-none focus:border-emerald-500/30 transition-colors"
+                    className="h-8 w-44 rounded-lg bg-white/3 border border-white/6 px-3 pl-8 text-xs text-zinc-300 placeholder:text-zinc-700 focus:outline-none focus:border-emerald-500/30 transition-colors"
                   />
                   <svg className="absolute left-2.5 top-2 h-4 w-4 text-zinc-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <circle cx="11" cy="11" r="7" />
@@ -105,14 +105,14 @@ export function Dashboard() {
                   </svg>
                 </div>
 
-                <div className="flex items-center rounded-lg bg-white/[0.02] border border-white/[0.04] p-0.5">
+                <div className="flex items-center rounded-lg bg-white/2 border border-white/5 p-0.5">
                   {(["rank", "change", "price", "volume"] as SortMode[]).map((mode) => (
                     <button
                       key={mode}
                       onClick={() => setSortMode(mode)}
                       className={`px-2.5 py-1 rounded-md text-[10px] font-medium transition-all ${
                         sortMode === mode
-                          ? "bg-white/[0.06] text-zinc-200"
+                          ? "bg-white/6 text-zinc-200"
                           : "text-zinc-600 hover:text-zinc-400"
                       }`}
                     >
@@ -146,7 +146,7 @@ export function Dashboard() {
         )}
       </main>
 
-      <footer className="relative z-10 border-t border-white/[0.03] mt-16">
+      <footer className="relative z-10 border-t border-white/3 mt-16">
         <div className="mx-auto max-w-7xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-zinc-700">
           <div className="flex items-center gap-2">
             <span className="text-gradient font-semibold">CryptoPulse</span>

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 const STRUCTURE = [
 	{
 		path: 'ws-server/src/app.ts',
@@ -55,7 +53,7 @@ export function OverviewTab() {
 							href='https://github.com/shubhu2002/crypto-pulse-websocket'
 							target='_blank'
 							rel='noopener noreferrer'
-							className='inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.05] border border-white/[0.08] text-sm font-medium text-zinc-200 hover:bg-white/[0.08] hover:border-white/[0.12] transition-all'
+							className='inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/8 text-sm font-medium text-zinc-200 hover:bg-white/8 hover:border-white/12 transition-all'
 						>
 							<svg
 								className='h-4 w-4'
@@ -145,10 +143,10 @@ export function OverviewTab() {
 				<table>
 					<thead>
 						<tr>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								File
 							</th>
-							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/[0.04] bg-white/[0.02]'>
+							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
 								Purpose
 							</th>
 						</tr>
@@ -157,7 +155,7 @@ export function OverviewTab() {
 						{STRUCTURE.map((f) => (
 							<tr
 								key={f.path}
-								className='border-b border-white/[0.02] last:border-0'
+								className='border-b border-white/2 last:border-0'
 							>
 								<td className='p-3 text-xs font-mono text-emerald-400/80'>
 									{f.path}
@@ -253,7 +251,7 @@ export function OverviewTab() {
 						href={link.href}
 						target='_blank'
 						rel='noopener noreferrer'
-						className='glass rounded-xl p-4 flex items-start gap-3 hover:bg-white/[0.04] hover:border-white/[0.08] transition-all group'
+						className='glass rounded-xl p-4 flex items-start gap-3 hover:bg-white/4 hover:border-white/8 transition-all group'
 					>
 						<div className='shrink-0 flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400 text-[10px] font-bold border border-violet-500/15'>
 							{link.icon}
