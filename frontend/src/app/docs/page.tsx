@@ -28,7 +28,7 @@ type GuideChapter = (typeof GUIDE_CHAPTERS)[number];
 
 
 const STRUCTURE = [
-  { path: "ws-server/src/server.ts", desc: "Express + ws backend, Binance connector, broadcast, heartbeat" },
+  { path: "ws-server/src/app.ts", desc: "Express + ws backend, Binance connector, broadcast, heartbeat" },
   { path: "frontend/src/hooks/useWebSocket.ts", desc: "React hook: connect, reconnect, track history" },
   { path: "frontend/src/components/Dashboard.tsx", desc: "Main layout with search, sort, market overview" },
   { path: "frontend/src/components/CoinCard.tsx", desc: "Individual coin tile with sparkline chart" },
@@ -51,7 +51,7 @@ function OverviewTab() {
             9 assets streaming live via Binance, with broadcast, heartbeats, and auto-reconnect.
           </p>
           <div className="flex flex-wrap gap-3 mt-5">
-            <a href="https://github.com/example-user/cryptopulse" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.05] border border-white/[0.08] text-sm font-medium text-zinc-200 hover:bg-white/[0.08] hover:border-white/[0.12] transition-all">
+            <a href="https://github.com/shubhu2002/crypto-pulse-websocket" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.05] border border-white/[0.08] text-sm font-medium text-zinc-200 hover:bg-white/[0.08] hover:border-white/[0.12] transition-all">
               <svg className="h-4 w-4" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
               GitHub Repo
             </a>
@@ -108,16 +108,16 @@ function OverviewTab() {
       <h2>Quick Start</h2>
       <div className="space-y-4">
         <div className="glass rounded-xl p-4">
-          <h3 className="text-sm font-semibold text-zinc-300 mb-2">1. Clone & install</h3>
-          <pre><code>{`git clone https://github.com/example-user/cryptopulse.git\ncd cryptopulse`}</code></pre>
+          <h3 className="text-sm font-semibold text-zinc-300 mb-2">1. Clone the Repository</h3>
+          <pre><code>{`git clone https://github.com/shubhu2002/crypto-pulse-websocket.git`}</code></pre>
         </div>
         <div className="glass rounded-xl p-4">
           <h3 className="text-sm font-semibold text-zinc-300 mb-2">2. Start the WebSocket server</h3>
-          <pre><code>{`cd ws-server\nnpm install\nnpm start          # Runs on port 4000`}</code></pre>
+          <pre><code>{`cd ws-server\nyarn install\nyarn dev          # Runs on port 4000`}</code></pre>
         </div>
         <div className="glass rounded-xl p-4">
           <h3 className="text-sm font-semibold text-zinc-300 mb-2">3. Start the Next.js frontend</h3>
-          <pre><code>{`cd frontend\nnpm install\nnpm run dev        # Runs on port 3000`}</code></pre>
+          <pre><code>{`cd frontend\npnpm install\npnpm dev        # Runs on port 3000`}</code></pre>
         </div>
         <div className="glass rounded-xl p-4">
           <h3 className="text-sm font-semibold text-zinc-300 mb-2">4. Open in browser</h3>
@@ -128,7 +128,7 @@ function OverviewTab() {
       <h2>Links & Resources</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 not-prose">
         {[
-          { label: "GitHub Repository", href: "https://github.com/example-user/cryptopulse", desc: "Source code, issues, and contribution guide", icon: "GH" },
+          { label: "GitHub Repository", href: "https://github.com/shubhu2002/crypto-pulse-websocket", desc: "Source code, issues, and contribution guide", icon: "GH" },
           { label: "Live Demo", href: "https://cryptopulse-demo.vercel.app", desc: "Deployed frontend on Vercel", icon: "LV" },
           { label: "Binance WebSocket Docs", href: "https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams", desc: "Upstream API we connect to", icon: "BN" },
           { label: "RFC 6455 — WebSocket Protocol", href: "https://datatracker.ietf.org/doc/html/rfc6455", desc: "The official spec this guide is built on", icon: "RF" },
