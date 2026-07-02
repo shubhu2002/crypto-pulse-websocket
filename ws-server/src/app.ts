@@ -1,0 +1,195 @@
+import axios from 'axios';
+import express from 'express';
+import http from 'http';
+import cors from 'cors';
+import { WebSocketServer, WebSocket } from 'ws';
+import { BinanceTickerMsg, CoinTick } from './types';
+import { COINS } from './data';
+
+const app = express();
+const server = http.createServer(app);
+
+app.use(express.json());
+app.use(cors());
+
+app.get('/health', (_req, res) => {
+	res.json({ status: 'ok', clients: clients.size, coins: COINS });
+});
+
+app.get('/history', async (req, res) => {
+	try {
+		const symbol = String(req.query.symbol || '').toUpperCase();
+		const interval = String(req.query.interval || '15m');
+		const limit = Number(req.query.limit || 100);
+		if (!symbol) {
+			return res.status(400).json({
+				error: 'symbol is required',
+			});
+		}
+		const response = await axios.get(
+			'https://api.binance.com/api/v3/klines',
+			{
+				params: {
+					symbol,
+					interval,
+					limit,
+				},
+			},
+		);
+
+		const data = response.data.map((k: any[]) => ({
+			time: Number(k[0]),
+			open: Number(k[1]),
+			high: Number(k[2]),
+			low: Number(k[3]),
+			close: Number(k[4]),
+			volume: Number(k[5]),
+		}));
+
+		res.json(data);
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({
+			error: 'Failed to fetch historical data',
+		});
+	}
+});
+
+// ──────────────────────────────────────────────
+//  WEBSOCKET SERVER — attached to the HTTP server
+// ──────────────────────────────────────────────
+const wss = new WebSocketServer({ server, path: '/ws' });
+
+const clients = new Set<WebSocket>();
+const latestPrices = new Map<string, CoinTick>();
+
+wss.on('connection', (ws, req) => {
+	const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+	console.log(`[connect] client from ${ip}  (total: ${clients.size + 1})`);
+	clients.add(ws);
+
+	// Send current prices snapshot immediately so the UI isn't empty
+	if (latestPrices.size > 0) {
+		ws.send(
+			JSON.stringify({
+				type: 'snapshot',
+				data: Object.fromEntries(latestPrices),
+			}),
+		);
+	}
+
+	// Handle client messages (e.g. subscribe/unsubscribe — extensible)
+	ws.on('message', (raw) => {
+		try {
+			const msg = JSON.parse(raw.toString());
+			console.log(`[message] from client:`, msg);
+		} catch {
+			console.log(`[message] non-JSON from client:`, raw.toString());
+		}
+	});
+
+	ws.on('close', (code, reason) => {
+		clients.delete(ws);
+		console.log(`[disconnect] code=${code}  (total: ${clients.size})`);
+	});
+
+	ws.on('error', (err) => {
+		console.error(`[error] client error:`, err.message);
+		clients.delete(ws);
+	});
+});
+
+// ──────────────────────────────────────────────
+//  BROADCAST helper
+// ──────────────────────────────────────────────
+function broadcast(data: object) {
+	const payload = JSON.stringify(data);
+	for (const client of clients) {
+		if (client.readyState === WebSocket.OPEN) {
+			client.send(payload);
+		}
+	}
+}
+
+// ──────────────────────────────────────────────
+//  BINANCE UPSTREAM — subscribe to mini tickers
+//  Server subscribes ONCE, broadcasts to all clients
+// ──────────────────────────────────────────────
+function connectToBinance() {
+	const streams = COINS.map((c) => `${c}@ticker`).join('/');
+	const url = `wss://stream.binance.com:9443/stream?streams=${streams}`;
+
+	console.log(`[binance] connecting to ${COINS.length} streams...`);
+	const upstream = new WebSocket(url);
+
+	upstream.on('open', () => {
+		console.log(`[binance] connected — streaming ${COINS.join(', ')}`);
+	});
+
+	upstream.on('message', (raw) => {
+		try {
+			const wrapper = JSON.parse(raw.toString());
+			const msg: BinanceTickerMsg = wrapper.data;
+
+			const tick: CoinTick = {
+				symbol: msg.s,
+				price: parseFloat(msg.c),
+				change24h: parseFloat(msg.P),
+				high24h: parseFloat(msg.h),
+				low24h: parseFloat(msg.l),
+				volume24h: parseFloat(msg.v),
+				timestamp: msg.E,
+			};
+
+			latestPrices.set(tick.symbol, tick);
+
+			// Broadcast individual tick to all connected clients
+			broadcast({ type: 'tick', data: tick });
+		} catch (err) {
+			console.error('[binance] parse error:', err);
+		}
+	});
+
+	upstream.on('close', (code) => {
+		console.log(
+			`[binance] disconnected (code=${code}), reconnecting in 3s...`,
+		);
+		setTimeout(connectToBinance, 3000);
+	});
+
+	upstream.on('error', (err) => {
+		console.error('[binance] error:', err.message);
+	});
+}
+
+// ──────────────────────────────────────────────
+//  HEARTBEAT — ping all clients every 30s
+// ──────────────────────────────────────────────
+const aliveClients = new WeakSet<WebSocket>();
+
+wss.on('connection', (ws) => {
+	aliveClients.add(ws);
+	ws.on('pong', () => aliveClients.add(ws));
+});
+
+setInterval(() => {
+	for (const ws of clients) {
+		if (!aliveClients.has(ws)) {
+			console.log('[heartbeat] terminating stale client');
+			ws.terminate();
+			clients.delete(ws);
+			continue;
+		}
+		aliveClients.delete(ws);
+		ws.ping();
+	}
+}, 30_000);
+
+const PORT = process.env.PORT || 4000;
+
+server.listen(PORT, () => {
+	console.log(`\n  WS server running on http://localhost:${PORT}`);
+	console.log(`  WebSocket endpoint:  ws://localhost:${PORT}/ws`);
+	console.log(`  Health check:        http://localhost:${PORT}/health\n`);
+	connectToBinance();
+});

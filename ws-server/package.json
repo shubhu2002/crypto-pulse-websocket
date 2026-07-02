@@ -1,21 +1,47 @@
 {
-  "name": "ws-server",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "dev": "tsx watch src/server.ts",
-    "start": "tsx src/server.ts"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@types/express": "^5.0.6",
-    "@types/ws": "^8.18.1",
-    "express": "^5.2.1",
-    "tsx": "^4.22.4",
-    "typescript": "^6.0.3",
-    "ws": "^8.21.0"
-  }
+	"name": "ws-server",
+	"version": "1.0.0",
+	"main": "app.js",
+	"scripts": {
+		"dev": "tsc --project tsconfig.json && concurrently \"tsc --watch --project tsconfig.json\" \"nodemon --watch dist dist/app.js\"",
+		"start": "node dist/app.js",
+		"build": "tsc --project tsconfig.json",
+		"lint": "eslint './src/**/*.{ts,js}'",
+		"format": "prettier --write './src/**/*.{ts,js,json}'"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"axios": "^1.18.1",
+		"cors": "^2.8.6",
+		"dotenv": "^17.4.2",
+		"express": "^5.2.1",
+		"express-rate-limit": "^8.5.2",
+		"express-zod-api": "^27.3.0",
+		"tsx": "^4.22.4",
+		"typescript": "^6.0.3",
+		"ws": "^8.21.0",
+		"zod": "^4.3.6"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.17",
+		"@types/express": "^5.0.6",
+		"@types/ws": "^8.18.1",
+		"@types/node": "^24.9.2",
+		"@typescript-eslint/eslint-plugin": "^8.18.2",
+		"@typescript-eslint/parser": "^8.18.2",
+		"concurrently": "^9.0.1",
+		"eslint": "^9.13.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-import-resolver-typescript": "^3.7.0",
+		"eslint-plugin-prettier": "^5.2.1",
+		"husky": "^9.1.7",
+		"nodemon": "^3.1.7",
+		"prettier": "^3.3.3",
+		"ts-node": "^10.9.2",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.3"
+	}
 }
