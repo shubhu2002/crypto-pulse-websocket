@@ -27,15 +27,17 @@ export const metadata: Metadata = {
     "live prices",
   ],
   authors: [{ name: "CryptoPulse" }],
+  metadataBase: new URL("https://crypto-pulse-websocket-ten.vercel.app"),
   openGraph: {
     title: "CryptoPulse — Live WebSocket Prices",
     description:
       "Real-time multi-coin crypto dashboard powered by WebSockets.",
+	  
     type: "website",
     siteName: "CryptoPulse",
     images: [
       {
-        url: "/og-image.svg",
+        url: "https://crypto-pulse-websocket-ten.vercel.app/og-image.svg",
         width: 1200,
         height: 630,
         alt: "CryptoPulse — Real-time crypto dashboard",
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
     title: "CryptoPulse — Live WebSocket Prices",
     description:
       "Real-time multi-coin crypto dashboard powered by WebSockets.",
-    images: ["/og-image.svg"],
+    images: ["https://crypto-pulse-websocket-ten.vercel.app/og-image.svg"],
   },
 };
 
