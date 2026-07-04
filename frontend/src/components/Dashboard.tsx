@@ -64,12 +64,12 @@ export function Dashboard() {
                 <div className="h-6 w-6 rounded-full border-2 border-emerald-500/30 border-t-emerald-400 animate-spin" />
               </div>
               <h2 className="text-lg font-semibold text-zinc-200 mb-2">Connecting...</h2>
-              <p className="text-sm text-zinc-500">
+              <p className="text-sm text-zinc-500 lg:text-nowrap">
                 Establishing WebSocket connection to the relay server.
               </p>
-              <p className="text-xs text-zinc-700 mt-3">
+              {/* <p className="text-xs text-zinc-700 mt-3">
                 Make sure <code className="text-emerald-400/80">ws-server</code> is running on port 4000
-              </p>
+              </p> */}
             </div>
           </div>
         ) : (
