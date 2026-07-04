@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import type { CoinTick, PricePoint, ServerMessage } from '@/lib/types';
 
-const WS_URL = process.env.WS_URL ?? 'ws://localhost:4000/ws';
+const WS_URL = process.env.NEXT_PUBLIC_WS_URL ?? 'wss://crypto-pulse-websocket-server.onrender.com/ws';
 const MAX_HISTORY = 60;
 
 export type ConnectionStatus = 'connecting' | 'connected' | 'disconnected';

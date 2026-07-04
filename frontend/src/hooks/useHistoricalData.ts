@@ -15,7 +15,7 @@ const PERIOD_CONFIG: Record<
 	ALL: { interval: '1w', limit: 120 },
 };
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'https://crypto-pulse-websocket-server.onrender.com';
 
 export function useHistoricalData(symbol: string, period: TimePeriod) {
 	const [data, setData] = useState<PricePoint[]>([]);
