@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
 	typescript: {
 		ignoreBuildErrors: true,
 	},
+	images: {
+		remotePatterns: [{ hostname: 'avatars.githubusercontent.com' }],
+	},
 };
 export default withBundleAnalyzer({
 	enabled: process.env.ANALYZE === 'true',

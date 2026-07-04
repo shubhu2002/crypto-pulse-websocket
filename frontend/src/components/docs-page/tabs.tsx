@@ -1,3 +1,9 @@
+import { FaGithub } from 'react-icons/fa';
+import { RiArrowRightUpLongLine } from 'react-icons/ri';
+import { GrDeploy } from 'react-icons/gr';
+import Image from 'next/image';
+import { SiHandshakeProtocol } from 'react-icons/si';
+
 const STRUCTURE = [
 	{
 		path: 'ws-server/src/app.ts',
@@ -55,16 +61,10 @@ export function OverviewTab() {
 							rel='noopener noreferrer'
 							className='inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/8 text-sm font-medium text-zinc-200 hover:bg-white/8 hover:border-white/12 transition-all'
 						>
-							<svg
-								className='h-4 w-4'
-								viewBox='0 0 16 16'
-								fill='currentColor'
-							>
-								<path d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z' />
-							</svg>
+							<FaGithub className='w-4 h-4' />
 							GitHub Repo
 						</a>
-						<a
+						{/* <a
 							href='https://crypto-pulse-websocket-ten.vercel.app'
 							target='_blank'
 							rel='noopener noreferrer'
@@ -82,7 +82,7 @@ export function OverviewTab() {
 								/>
 							</svg>
 							Live Demo
-						</a>
+						</a> */}
 					</div>
 				</div>
 			</div>
@@ -140,7 +140,7 @@ export function OverviewTab() {
 
 			<h2>Project Structure</h2>
 			<div className='not-prose glass rounded-xl overflow-x-auto'>
-				<table className='min-w-[520px]'>
+				<table className='min-w-130'>
 					<thead>
 						<tr>
 							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>
@@ -213,38 +213,38 @@ export function OverviewTab() {
 						label: 'GitHub Repository',
 						href: 'https://github.com/shubhu2002/crypto-pulse-websocket',
 						desc: 'Source code, issues, and contribution guide',
-						icon: 'GH',
+						icon: <FaGithub className='w-5 h-5' />,
 					},
 					{
 						label: 'Live Demo',
 						href: 'https://crypto-pulse-websocket-ten.vercel.app',
 						desc: 'Deployed frontend on Vercel',
-						icon: 'LV',
+						icon: <GrDeploy className='w-5 h-5' />,
 					},
 					{
 						label: 'Binance WebSocket Docs',
 						href: 'https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams',
 						desc: 'Upstream API we connect to',
-						icon: 'BN',
+						icon: 'https://www.logo.wine/a/logo/Binance/Binance-Icon-Logo.wine.svg',
 					},
 					{
 						label: 'RFC 6455 — WebSocket Protocol',
 						href: 'https://datatracker.ietf.org/doc/html/rfc6455',
 						desc: 'The official spec this guide is built on',
-						icon: 'RF',
+						icon: <SiHandshakeProtocol className='w-5 h-5' />,
 					},
 					{
 						label: 'ws — Node WebSocket Library',
 						href: 'https://github.com/websockets/ws',
 						desc: 'The server library used in this project',
-						icon: 'WS',
+						icon: 'https://avatars.githubusercontent.com/u/10721323?s=48&v=4',
 					},
-					{
-						label: 'MDN WebSocket API',
-						href: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSocket',
-						desc: 'Browser API reference',
-						icon: 'MD',
-					},
+					// {
+					// 	label: 'MDN WebSocket API',
+					// 	href: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSocket',
+					// 	desc: 'Browser API reference',
+					// 	icon: "https://www.logo.wine/a/logo/Binance/Binance-Icon-Logo.wine.svg",
+					// },
 				].map((link) => (
 					<a
 						key={link.label}
@@ -254,22 +254,20 @@ export function OverviewTab() {
 						className='glass rounded-xl p-4 flex items-start gap-3 hover:bg-white/4 hover:border-white/8 transition-all group'
 					>
 						<div className='shrink-0 flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400 text-[10px] font-bold border border-violet-500/15'>
-							{link.icon}
+							{typeof link.icon === 'string' ?
+								<Image
+									src={link.icon}
+									alt='img'
+									width={999}
+									height={999}
+									className='w-8 h-8'
+								/>
+							:	link.icon}
 						</div>
 						<div>
 							<div className='text-sm font-semibold text-zinc-200 group-hover:text-white flex items-center gap-1.5'>
 								{link.label}
-								<svg
-									className='h-3 w-3 text-zinc-600 group-hover:text-zinc-400 transition-colors'
-									viewBox='0 0 20 20'
-									fill='currentColor'
-								>
-									<path
-										fillRule='evenodd'
-										d='M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z'
-										clipRule='evenodd'
-									/>
-								</svg>
+								<RiArrowRightUpLongLine className='h-3 w-3 text-zinc-600 group-hover:text-zinc-400 transition-colors' />
 							</div>
 							<div className='text-xs text-zinc-600 mt-0.5'>
 								{link.desc}
@@ -282,27 +280,28 @@ export function OverviewTab() {
 			<h2>Try These Experiments</h2>
 			<ul>
 				<li>
-					<strong>Open multiple tabs</strong> — watch the server log
-					show client count increasing. All tabs get the same
-					broadcast data.
+					<strong className='pl-0.5'>Open multiple tabs</strong> —
+					watch the server log show client count increasing. All tabs
+					get the same broadcast data.
 				</li>
 				<li>
-					<strong>Kill the WS server</strong> — watch the frontend
-					show &quot;Disconnected&quot; and auto-reconnect when you
-					restart it.
+					<strong className='pl-0.5'>Kill the WS server</strong> —
+					watch the frontend show &quot;Disconnected&quot; and
+					auto-reconnect when you restart it.
 				</li>
 				<li>
 					<strong>Check DevTools → Network → WS</strong> — see every
 					WebSocket frame flowing in real-time.
 				</li>
 				<li>
-					<strong>Hit the health endpoint</strong> —{' '}
-					<code>curl http://localhost:4000/health</code> shows
+					<strong className='pl-0.5'>Hit the health endpoint</strong>{' '}
+					— <code>curl http://localhost:4000/health</code> shows
 					connected client count.
 				</li>
 				<li>
-					<strong>Add a new coin</strong> — add to COINS in server.ts
-					and COIN_META in types.ts, restart server.
+					<strong className='pl-0.5'>Add a new coin</strong> — add to
+					COINS in server.ts and COIN_META in types.ts, restart
+					server.
 				</li>
 			</ul>
 		</>
@@ -1398,4 +1397,3 @@ export function DataFlowTab() {
 		</>
 	);
 }
-
