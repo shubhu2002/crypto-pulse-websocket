@@ -1482,9 +1482,9 @@ husky@^9.1.7:
   integrity sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==
 
 iconv-lite@^0.7.2, iconv-lite@~0.7.0:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.7.2.tgz#d0bdeac3f12b4835b7359c2ad89c422a4d1cc72e"
-  integrity sha512-im9DjEDQ55s9fL4EYzOAv0yMqmMBSZp6G0VvFyTMPKWxiSBHUj9NW/qqLmXUwXrrM7AvqSlTCfvqRb0cM8yYqw==
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.7.3.tgz#84ee12f963e7de50bc01a13e160a078b3b0f415f"
+  integrity sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ==
   dependencies:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
@@ -1856,9 +1856,9 @@ picomatch@^2.0.4, picomatch@^2.2.1:
   integrity sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==
 
 picomatch@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-4.0.4.tgz#fd6f5e00a143086e074dffe4c924b8fb293b0589"
-  integrity sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-4.0.5.tgz#51ea57a17d86f605f81039595fbc40ed06a55fab"
+  integrity sha512-RvwwcruNjI1ncT5xRakeyS9Lf8lcItv34KD+aif+VH9kduAyfYBipGh12274xtenIPZ119/R9BdTBa8gAwSh0A==
 
 prelude-ls@^1.2.1:
   version "1.2.1"
@@ -2198,9 +2198,9 @@ tslib@^2.1.0, tslib@^2.4.0:
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
 
 tsx@^4.22.4:
-  version "4.22.4"
-  resolved "https://registry.yarnpkg.com/tsx/-/tsx-4.22.4.tgz#0ab3b7fb4ec7feeee74e5b1f26337caa71e44700"
-  integrity sha512-X8EX+XV4QR5xCsrgxaED954zTDfY8KqlDtskKEL0cHhyS/P8b4IFOvGDQpsC9Q1XnLq915wEfwwY/zzskCtmhg==
+  version "4.23.0"
+  resolved "https://registry.yarnpkg.com/tsx/-/tsx-4.23.0.tgz#5393ae8bfce5a9c34db9c00d1353e3d8c3fd3de6"
+  integrity sha512-eUdUIaCr963q2h5u3+QwvYp0+eqPvn+egeqZUm0hwERCqqx1E3kK5ehbGCvqSE5MQAULr67ww0cA3jKc3YkM1w==
   dependencies:
     esbuild "~0.28.0"
   optionalDependencies:
