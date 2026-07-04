@@ -33,12 +33,21 @@ export const metadata: Metadata = {
       "Real-time multi-coin crypto dashboard powered by WebSockets.",
     type: "website",
     siteName: "CryptoPulse",
+    images: [
+      {
+        url: "/og-image.svg",
+        width: 1200,
+        height: 630,
+        alt: "CryptoPulse — Real-time crypto dashboard",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "CryptoPulse — Live WebSocket Prices",
     description:
       "Real-time multi-coin crypto dashboard powered by WebSockets.",
+    images: ["/og-image.svg"],
   },
 };
 

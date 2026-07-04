@@ -1,0 +1,88 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#050507"/>
+      <stop offset="40%" stop-color="#0a0a0f"/>
+      <stop offset="70%" stop-color="#0d0b14"/>
+      <stop offset="100%" stop-color="#050507"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="88" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10b981"/>
+      <stop offset="0.5" stop-color="#06b6d4"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="pulse" x1="16" y1="44" x2="72" y2="44" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10b981"/>
+      <stop offset="0.4" stop-color="#06b6d4"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="glow-g" x1="44" y1="16" x2="44" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10b981" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="title-grad" x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e4e4e7"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="accent-line" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10b981"/>
+      <stop offset="0.5" stop-color="#06b6d4"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <radialGradient id="glow-tl" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(120 80) scale(400)">
+      <stop stop-color="#10b981" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-br" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1080 550) scale(500)">
+      <stop stop-color="#8b5cf6" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-center" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 260) scale(300)">
+      <stop stop-color="#06b6d4" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" patternUnits="userSpaceOnUse" width="60" height="60">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="120" cy="80" r="400" fill="url(#glow-tl)"/>
+  <circle cx="1080" cy="550" r="500" fill="url(#glow-br)"/>
+  <circle cx="600" cy="260" r="300" fill="url(#glow-center)"/>
+
+  <!-- Logo -->
+  <g transform="translate(556, 180)">
+    <rect x="4" y="4" width="80" height="80" rx="24" fill="#0d0d0d"/>
+    <rect x="4" y="4" width="80" height="80" rx="24" fill="none" stroke="url(#ring)" stroke-width="1.5" stroke-opacity="0.6"/>
+    <ellipse cx="44" cy="32" rx="28" ry="20" fill="url(#glow-g)"/>
+    <path d="M44 20 L57 27.6 L57 42.4 L44 50 L31 42.4 L31 27.6 Z" fill="none" stroke="url(#ring)" stroke-width="0.8" stroke-opacity="0.2"/>
+    <path d="M14 48 L22 48 L27 54 L32 32 L38 60 L44 22 L50 56 L55 34 L60 48 L66 48 L74 48" stroke="url(#pulse)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <circle cx="74" cy="48" r="4" fill="#10b981"/>
+    <circle cx="74" cy="48" r="4" fill="none" stroke="#10b981" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="330" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="800" fill="url(#title-grad)" letter-spacing="-1">CryptoPulse</text>
+
+  <!-- Description -->
+  <text x="600" y="370" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#71717a" font-weight="400" letter-spacing="0.3">Real-time crypto dashboard powered by WebSockets</text>
+
+  <!-- Tags -->
+  <g transform="translate(430, 410)">
+    <rect width="100" height="30" rx="15" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.2)" stroke-width="0.5"/>
+    <text x="50" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#10b981" font-weight="500">Live prices</text>
+  </g>
+  <g transform="translate(550, 410)">
+    <rect width="100" height="30" rx="15" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.2)" stroke-width="0.5"/>
+    <text x="50" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#06b6d4" font-weight="500">9 coins</text>
+  </g>
+  <g transform="translate(670, 410)">
+    <rect width="100" height="30" rx="15" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.2)" stroke-width="0.5"/>
+    <text x="50" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#8b5cf6" font-weight="500">Sparklines</text>
+  </g>
+
+  <!-- Bottom accent -->
+  <rect y="627" width="1200" height="3" fill="url(#accent-line)" opacity="0.6"/>
+</svg>
