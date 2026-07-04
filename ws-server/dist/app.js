@@ -26,7 +26,7 @@ app.get('/history', async (req, res) => {
                 error: 'symbol is required',
             });
         }
-        const response = await axios_1.default.get('https://api.binance.com/api/v3/klines', {
+        const response = await axios_1.default.get('https://data-api.binance.vision/api/v3/klines', {
             params: {
                 symbol,
                 interval,
@@ -101,13 +101,22 @@ function broadcast(data) {
 //  BINANCE UPSTREAM — subscribe to mini tickers
 //  Server subscribes ONCE, broadcasts to all clients
 // ──────────────────────────────────────────────
+const BINANCE_ENDPOINTS = [
+    'wss://data-stream.binance.vision',
+    'wss://stream.binance.com:9443',
+];
+let endpointIndex = 0;
+let reconnectDelay = 3000;
+const MAX_RECONNECT_DELAY = 60_000;
 function connectToBinance() {
+    const base = BINANCE_ENDPOINTS[endpointIndex % BINANCE_ENDPOINTS.length];
     const streams = data_1.COINS.map((c) => `${c}@ticker`).join('/');
-    const url = `wss://stream.binance.com:9443/stream?streams=${streams}`;
-    console.log(`[binance] connecting to ${data_1.COINS.length} streams...`);
+    const url = `${base}/stream?streams=${streams}`;
+    console.log(`[binance] connecting to ${data_1.COINS.length} streams via ${base}...`);
     const upstream = new ws_1.WebSocket(url);
     upstream.on('open', () => {
         console.log(`[binance] connected — streaming ${data_1.COINS.join(', ')}`);
+        reconnectDelay = 3000;
     });
     upstream.on('message', (raw) => {
         try {
@@ -123,7 +132,6 @@ function connectToBinance() {
                 timestamp: msg.E,
             };
             latestPrices.set(tick.symbol, tick);
-            // Broadcast individual tick to all connected clients
             broadcast({ type: 'tick', data: tick });
         }
         catch (err) {
@@ -131,8 +139,15 @@ function connectToBinance() {
         }
     });
     upstream.on('close', (code) => {
-        console.log(`[binance] disconnected (code=${code}), reconnecting in 3s...`);
-        setTimeout(connectToBinance, 3000);
+        if (code === 1006) {
+            endpointIndex++;
+            console.log(`[binance] blocked (code=${code}), switching endpoint, retrying in ${reconnectDelay / 1000}s...`);
+        }
+        else {
+            console.log(`[binance] disconnected (code=${code}), reconnecting in ${reconnectDelay / 1000}s...`);
+        }
+        setTimeout(connectToBinance, reconnectDelay);
+        reconnectDelay = Math.min(reconnectDelay * 2, MAX_RECONNECT_DELAY);
     });
     upstream.on('error', (err) => {
         console.error('[binance] error:', err.message);
