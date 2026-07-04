@@ -171,6 +171,15 @@ body {
   font-size: 0.85rem;
 }
 
+/* On small screens, let wide tables scroll instead of overflowing the page */
+@media (max-width: 640px) {
+  .docs-prose table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 .docs-prose th {
   text-align: left;
   padding: 0.6rem 1rem;

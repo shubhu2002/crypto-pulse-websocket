@@ -36,11 +36,11 @@ const STRUCTURE = [
 export function OverviewTab() {
 	return (
 		<>
-			<div className='glass rounded-2xl p-8 mb-8 relative overflow-hidden'>
+			<div className='glass rounded-2xl p-6 sm:p-8 mb-8 relative overflow-hidden'>
 				<div className='absolute -top-20 -right-20 h-40 w-40 rounded-full bg-emerald-500/10 blur-[80px]' />
 				<div className='absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-indigo-500/10 blur-[80px]' />
 				<div className='relative'>
-					<h1 className='text-3xl font-bold text-zinc-100 mb-2'>
+					<h1 className='text-2xl sm:text-3xl font-bold text-zinc-100 mb-2'>
 						Learn WebSockets
 					</h1>
 					<p className='text-zinc-400 max-w-xl text-base leading-relaxed'>
@@ -139,8 +139,8 @@ export function OverviewTab() {
 			</div>
 
 			<h2>Project Structure</h2>
-			<div className='not-prose glass rounded-xl overflow-hidden'>
-				<table>
+			<div className='not-prose glass rounded-xl overflow-x-auto'>
+				<table className='min-w-[520px]'>
 					<thead>
 						<tr>
 							<th className='text-left p-3 text-[11px] text-zinc-500 font-medium border-b border-white/4 bg-white/2'>

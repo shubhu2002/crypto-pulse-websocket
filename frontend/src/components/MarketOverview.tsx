@@ -56,11 +56,11 @@ export function MarketOverview({ prices, currency }: MarketOverviewProps) {
           key={stat.label}
           className={`glass rounded-xl p-4 shadow-lg ${stat.glow}`}
         >
-          <div className="text-[10px] uppercase tracking-wider text-zinc-600 mb-1.5">
+          <div className="text-[10px] uppercase tracking-wider text-zinc-600 mb-1.5 truncate">
             {stat.label}
           </div>
-          <div className={`text-lg font-bold ${stat.color}`}>{stat.value}</div>
-          <div className="text-xs text-zinc-500 mt-0.5">{stat.sub}</div>
+          <div className={`text-lg font-bold truncate ${stat.color}`}>{stat.value}</div>
+          <div className="text-xs text-zinc-500 mt-0.5 truncate">{stat.sub}</div>
         </div>
       ))}
     </div>

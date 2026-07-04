@@ -65,6 +65,12 @@ export function DetailChart({ tick, history: liveHistory, currency }: DetailChar
     : { min: 0, max: 0 };
   const padding = (priceRange.max - priceRange.min) * 0.15 || 1;
 
+  const dayStats = [
+    { label: "24h High", value: formatPrice(tick.high24h, currency), color: "text-emerald-400" },
+    { label: "24h Low", value: formatPrice(tick.low24h, currency), color: "text-red-400" },
+    { label: "Volume", value: formatVolume(tick.volume24h), color: "text-blue-400" },
+  ];
+
   const periodLabel = period === "live"
     ? "Live streaming — updates every second"
     : period === "1D" ? "Last 24 hours — 15min candles"
@@ -86,7 +92,7 @@ export function DetailChart({ tick, history: liveHistory, currency }: DetailChar
         style={{ backgroundColor: meta.color }}
       />
 
-      <div className="relative p-5">
+      <div className="relative p-4 sm:p-5">
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
             <CoinIcon symbol={tick.symbol} size={44} />
@@ -111,11 +117,7 @@ export function DetailChart({ tick, history: liveHistory, currency }: DetailChar
 
           <div className="flex items-center gap-2">
             <div className="hidden sm:flex items-center gap-1.5">
-              {[
-                { label: "24h High", value: formatPrice(tick.high24h, currency), color: "text-emerald-400" },
-                { label: "24h Low", value: formatPrice(tick.low24h, currency), color: "text-red-400" },
-                { label: "Volume", value: formatVolume(tick.volume24h), color: "text-blue-400" },
-              ].map((s) => (
+              {dayStats.map((s) => (
                 <div key={s.label} className="rounded-lg bg-white/3 border border-white/4 px-2.5 py-1.5 text-center">
                   <div className="text-[9px] text-zinc-600 mb-0.5">{s.label}</div>
                   <div className={`text-[11px] font-semibold ${s.color}`}>{s.value}</div>
@@ -123,6 +125,16 @@ export function DetailChart({ tick, history: liveHistory, currency }: DetailChar
               ))}
             </div>
           </div>
+        </div>
+
+        {/* 24h stats — compact row on mobile (hidden above via sm:flex) */}
+        <div className="grid grid-cols-3 gap-1.5 mb-3 sm:hidden">
+          {dayStats.map((s) => (
+            <div key={s.label} className="rounded-lg bg-white/3 border border-white/4 px-2 py-1.5 text-center min-w-0">
+              <div className="text-[9px] text-zinc-600 mb-0.5">{s.label}</div>
+              <div className={`text-[11px] font-semibold truncate ${s.color}`}>{s.value}</div>
+            </div>
+          ))}
         </div>
 
         {/* Period filter */}

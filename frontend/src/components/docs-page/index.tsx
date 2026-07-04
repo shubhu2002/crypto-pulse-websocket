@@ -24,13 +24,13 @@ const Documentation = () => {
 	return (
 		<div className='min-h-screen mesh-gradient noise-bg'>
 			<header className='sticky top-0 z-50 border-b border-white/4 bg-[#050507]/70 backdrop-blur-2xl'>
-				<div className='px-10 h-16 flex items-center justify-between'>
+				<div className='px-4 sm:px-6 lg:px-10 h-16 flex items-center justify-between gap-2'>
 					<Link
 						href='/'
 						className='flex items-center gap-3 group'
 					>
 						<Logo size={36} />
-						<span className='text-[15px] font-extrabold tracking-tight text-gradient'>
+						<span className='hidden min-[480px]:inline text-[15px] font-extrabold tracking-tight text-gradient'>
 							CryptoPulse
 						</span>
 						<span className='text-[9px] font-bold uppercase tracking-[0.12em] text-violet-400/80 bg-violet-500/10 border border-violet-500/20 px-1.5 py-0.5 rounded-md'>
@@ -39,14 +39,14 @@ const Documentation = () => {
 					</Link>
 					<Link
 						href='/'
-						className='text-xs text-zinc-500 hover:text-zinc-300 transition-colors flex items-center gap-1.5'
+						className='text-xs text-zinc-500 hover:text-zinc-300 transition-colors flex items-center gap-1.5 shrink-0'
 					>
-						<span>←</span> Back to Dashboard
+						<span>←</span> Back<span className='hidden sm:inline'>to Dashboard</span>
 					</Link>
 				</div>
 			</header>
 
-			<div className='relative z-10 flex px-6'>
+			<div className='relative z-10 flex flex-col lg:flex-row px-4 sm:px-6'>
 				{/* Sidebar */}
 				<aside className='hidden lg:flex flex-col w-56 shrink-0 sticky top-16 h-[calc(100vh-4rem)] py-4 px-3 border-r border-white/4 overflow-y-auto'>
 					<nav className='space-y-1.5 flex-1'>
@@ -123,12 +123,12 @@ const Documentation = () => {
 				</aside>
 
 				{/* Mobile tab bar */}
-				<div className='flex items-center gap-1 mb-6 p-1 rounded-xl bg-white/2 border border-white/4 w-fit lg:hidden'>
+				<div className='flex items-center gap-1 mt-4 p-1 rounded-xl bg-white/2 border border-white/4 w-full overflow-x-auto lg:hidden'>
 					{TABS.map((tab) => (
 						<button
 							key={tab}
 							onClick={() => setActiveTab(tab)}
-							className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+							className={`shrink-0 whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
 								activeTab === tab ?
 									'bg-white/8 text-zinc-100 shadow-sm'
 								:	'text-zinc-500 hover:text-zinc-300 hover:bg-white/3'
@@ -140,7 +140,7 @@ const Documentation = () => {
 				</div>
 
 				{/* Main content */}
-				<main className='docs-prose flex-1 min-w-0 px-5 py-4 max-w-5xl'>
+				<main className='docs-prose flex-1 min-w-0 px-0 sm:px-5 py-4 max-w-5xl'>
 					{activeTab === 'Overview' && <OverviewTab />}
 					{activeTab === 'Architecture' && <ArchitectureTab />}
 					{activeTab === 'Data Flow' && <DataFlowTab />}

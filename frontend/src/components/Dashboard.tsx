@@ -56,7 +56,7 @@ export function Dashboard() {
         onCurrencyChange={setCurrency}
       />
 
-      <main className="relative z-10 px-10 py-4 space-y-4">
+      <main className="relative z-10 px-4 sm:px-6 lg:px-10 py-4 space-y-4">
         {availableCoins.length === 0 ? (
           <div className="flex items-center justify-center h-[70vh]">
             <div className="text-center glass rounded-2xl p-12 max-w-md">
@@ -90,14 +90,14 @@ export function Dashboard() {
                 </span>
               </div>
 
-              <div className="flex items-center gap-2">
-                <div className="relative">
+              <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
+                <div className="relative w-full sm:w-auto">
                   <input
                     type="text"
                     placeholder="Search coins..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className="h-8 w-44 rounded-lg bg-white/3 border border-white/6 px-3 pl-8 text-xs text-zinc-300 placeholder:text-zinc-700 focus:outline-none focus:border-emerald-500/30 transition-colors"
+                    className="h-8 w-full sm:w-44 rounded-lg bg-white/3 border border-white/6 px-3 pl-8 text-xs text-zinc-300 placeholder:text-zinc-700 focus:outline-none focus:border-emerald-500/30 transition-colors"
                   />
                   <svg className="absolute left-2.5 top-2 h-4 w-4 text-zinc-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <circle cx="11" cy="11" r="7" />
@@ -105,7 +105,7 @@ export function Dashboard() {
                   </svg>
                 </div>
 
-                <div className="flex items-center rounded-lg bg-white/2 border border-white/5 p-0.5">
+                <div className="flex w-fit items-center rounded-lg bg-white/2 border border-white/5 p-0.5">
                   {(["rank", "change", "price", "volume"] as SortMode[]).map((mode) => (
                     <button
                       key={mode}
@@ -123,7 +123,7 @@ export function Dashboard() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {sortedCoins.map((symbol, i) => (
                 <CoinCard
                   key={symbol}

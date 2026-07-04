@@ -24,11 +24,11 @@ export function GuideTab() {
 
 	return (
 		<>
-			<div className='glass rounded-2xl p-8 mb-8 relative overflow-hidden'>
+			<div className='glass rounded-2xl p-6 sm:p-8 mb-8 relative overflow-hidden'>
 				<div className='absolute -top-20 -right-20 h-40 w-40 rounded-full bg-violet-500/10 blur-[80px]' />
 				<div className='absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-blue-500/10 blur-[80px]' />
 				<div className='relative'>
-					<h1 className='text-3xl font-bold text-zinc-100 mb-2'>
+					<h1 className='text-2xl sm:text-3xl font-bold text-zinc-100 mb-2'>
 						WebSockets — From Scratch to Everything
 					</h1>
 					<p className='text-zinc-400 max-w-xl text-base leading-relaxed'>
@@ -86,7 +86,7 @@ function ChapterSection({
 	children: React.ReactNode;
 }) {
 	return (
-		<div className='glass rounded-2xl p-8 relative overflow-hidden'>
+		<div className='glass rounded-2xl p-5 sm:p-8 relative overflow-hidden'>
 			<div className='absolute -top-20 -right-20 h-40 w-40 rounded-full bg-violet-500/10 blur-[80px]' />
 			<div className='absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-emerald-500/5 blur-[80px]' />
 			<div className='relative'>

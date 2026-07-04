@@ -38,9 +38,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://crypto-pulse-websocket-ten.vercel.app/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "CryptoPulse — Real-time crypto dashboard",
       },
     ],
   },
