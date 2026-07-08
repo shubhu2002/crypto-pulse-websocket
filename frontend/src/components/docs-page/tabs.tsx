@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { FaGithub } from 'react-icons/fa';
 import { RiArrowRightUpLongLine } from 'react-icons/ri';
 import { GrDeploy } from 'react-icons/gr';
@@ -94,23 +95,33 @@ export function OverviewTab() {
 						name: 'Next.js 16',
 						desc: 'React framework',
 						color: '#fff',
+						icon:"https://marcbruederlin.gallerycdn.vsassets.io/extensions/marcbruederlin/next-icons/0.1.0/1723747598319/Microsoft.VisualStudio.Services.Icons.Default"
 					},
 					{
 						name: 'TypeScript',
 						desc: 'Type safety',
 						color: '#3178c6',
+						icon:"https://cdn-icons-png.flaticon.com/512/5968/5968381.png"
+
 					},
-					{ name: 'Express', desc: 'HTTP server', color: '#68a063' },
-					{ name: 'ws', desc: 'WebSocket library', color: '#10b981' },
+					{ name: 'Express', desc: 'HTTP server', color: '#68a063', icon:"https://avatars.githubusercontent.com/u/5658226?v=4" },
+					{ name: 'ws', desc: 'WebSocket library', color: '#10b981', 
+						icon:"https://avatars.githubusercontent.com/u/10721323?s=48&v=4"
+
+					 },
 					{
 						name: 'Recharts',
 						desc: 'React charts',
 						color: '#8884d8',
+						icon:"https://avatars.githubusercontent.com/u/13690587?s=48&v=4"
+
 					},
 					{
 						name: 'Tailwind CSS',
 						desc: 'Utility CSS',
 						color: '#38bdf8',
+						icon:"https://tailwindcss.com/_next/static/media/tailwindcss-mark.0~s.iziag2xd..svg"
+
 					},
 				].map((tech) => (
 					<div
@@ -118,6 +129,22 @@ export function OverviewTab() {
 						className='glass rounded-xl p-3 flex items-center gap-3'
 					>
 						<div
+							className='h-10 w-10 rounded-lg flex items-center justify-center text-[10px] font-bold overflow-hidden'
+							style={{
+								backgroundColor: tech.color + '15',
+								color: tech.color,
+							}}
+						>
+							<img
+									src={tech.icon || "icon"}
+									alt='img'
+									width={999}
+									height={999}
+									className='w-full h-full object-fit'
+								/>
+						</div>
+						
+						{/* <div
 							className='h-8 w-8 rounded-lg flex items-center justify-center text-[10px] font-bold'
 							style={{
 								backgroundColor: tech.color + '15',
@@ -125,7 +152,7 @@ export function OverviewTab() {
 							}}
 						>
 							{tech.name.slice(0, 2).toUpperCase()}
-						</div>
+						</div> */}
 						<div>
 							<div className='text-sm font-medium text-zinc-200'>
 								{tech.name}
