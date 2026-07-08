@@ -8,6 +8,7 @@ import { CoinCard } from "./CoinCard";
 import { DetailChart } from "./DetailChart";
 import { COIN_META } from "@/lib/types";
 import { CURRENCIES, type Currency } from "@/lib/currency";
+import Link from "next/link";
 
 const COIN_ORDER = Object.keys(COIN_META);
 
@@ -63,13 +64,16 @@ export function Dashboard() {
               <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500/10 mb-4">
                 <div className="h-6 w-6 rounded-full border-2 border-emerald-500/30 border-t-emerald-400 animate-spin" />
               </div>
-              <h2 className="text-lg font-semibold text-zinc-200 mb-2">Connecting...</h2>
+              <h2 className="text-xl font-semibold text-zinc-200 mb-2">Connecting...</h2>
               <p className="text-sm text-zinc-500 lg:text-nowrap">
                 Establishing WebSocket connection to the relay server.
               </p>
               {/* <p className="text-xs text-zinc-700 mt-3">
                 Make sure <code className="text-emerald-400/80">ws-server</code> is running on port 4000
               </p> */}
+			  <p className="text-xs text-zinc-700 mt-2">
+  				Note: The first connection may take a little longer because our <Link href={"https://github.com/shubhu2002/crypto-pulse-websocket/tree/master/ws-server"} target="_blank"><code className="text-emerald-400/80">ws-server</code></Link> is hosted on a free server that may need to wake up.
+			  </p>
             </div>
           </div>
         ) : (
