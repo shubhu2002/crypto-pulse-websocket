@@ -6,6 +6,5 @@ export const COINS = [
 	'xrpusdt',
 	'bnbusdt',
 	'adausdt',
-	'maticusdt',
 	'paxgusdt',
 ];

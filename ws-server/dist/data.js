@@ -9,6 +9,5 @@ exports.COINS = [
     'xrpusdt',
     'bnbusdt',
     'adausdt',
-    'maticusdt',
     'paxgusdt',
 ];
