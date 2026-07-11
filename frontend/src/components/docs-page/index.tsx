@@ -104,15 +104,15 @@ const Documentation = () => {
 
 					{/* Bottom section */}
 					<div className='mt-auto pt-4 border-t border-white/4 space-y-2'>
-						<a
-							href='https://github.com/example-user/cryptopulse'
+						<Link
+							href='https://github.com/shubhu2002'
 							target='_blank'
 							rel='noopener noreferrer'
 							className='flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-zinc-500 hover:text-zinc-300 hover:bg-white/3 transition-all'
 						>
 							<FaGithub className='w-4 h-4' />
-							GitHub Repo
-						</a>
+							GitHub
+						</Link>
 						<div className='px-3 text-[11px] text-zinc-700'>
 							Created by{' '}
 							<span className='text-zinc-500'>
