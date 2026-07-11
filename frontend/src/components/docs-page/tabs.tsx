@@ -4,6 +4,7 @@ import { RiArrowRightUpLongLine } from 'react-icons/ri';
 import { GrDeploy } from 'react-icons/gr';
 import Image from 'next/image';
 import { SiHandshakeProtocol } from 'react-icons/si';
+import { ASSET_COUNT, COIN_COUNT, COMMODITY_COUNT } from '@/lib/types';
 
 const STRUCTURE = [
 	{
@@ -36,7 +37,7 @@ const STRUCTURE = [
 	},
 	{
 		path: 'frontend/src/lib/types.ts',
-		desc: 'TypeScript types + asset metadata (8 coins + 1 commodity)',
+		desc: `TypeScript types + asset metadata (${COIN_COUNT} coins + ${COMMODITY_COUNT} commodity)`,
 	},
 ];
 
@@ -52,7 +53,7 @@ export function OverviewTab() {
 					</h1>
 					<p className='text-zinc-400 max-w-xl text-base leading-relaxed'>
 						A real-time crypto dashboard built to learn WebSockets
-						from the ground up. 9 assets streaming live via Binance,
+						from the ground up. {ASSET_COUNT} assets streaming live via Binance,
 						with broadcast, heartbeats, and auto-reconnect.
 					</p>
 					<div className='flex flex-wrap gap-3 mt-5'>
@@ -228,7 +229,7 @@ export function OverviewTab() {
 					</h3>
 					<p>
 						Visit <code>http://localhost:3000</code> — you&apos;ll
-						see 9 assets streaming live with charts.
+						see {ASSET_COUNT} assets streaming live with charts.
 					</p>
 				</div>
 			</div>
@@ -434,7 +435,7 @@ export function ArchitectureTab() {
 						textAnchor='middle'
 						className='a-detail'
 					>
-						wss://stream.binance.com:9443 — 9 asset ticker streams
+						wss://stream.binance.com:9443 — {ASSET_COUNT} asset ticker streams
 					</text>
 					<path
 						d='M380,75 L380,120'
@@ -804,7 +805,7 @@ export function ArchitectureTab() {
 				When a new client connects, the server immediately sends all
 				current prices as a &quot;snapshot&quot; message. Without this,
 				users would see empty cards until each coin&apos;s next tick
-				arrives. The snapshot fills all 12 cards instantly.
+				arrives. The snapshot fills all {ASSET_COUNT} cards instantly.
 			</p>
 			<h3>3. Price History on the Client</h3>
 			<p>
@@ -1200,7 +1201,7 @@ export function DataFlowTab() {
 						textAnchor='middle'
 						className='s-note'
 					>
-						repeats ~9 ticks/sec (9 assets × ~1 tick/sec each)
+						repeats ~{ASSET_COUNT} ticks/sec ({ASSET_COUNT} assets × ~1 tick/sec each)
 					</text>
 					<rect
 						x='15'
@@ -1337,7 +1338,7 @@ export function DataFlowTab() {
 			<p>
 				The Express server starts on port 4000 and immediately connects
 				to Binance&apos;s combined stream endpoint. It subscribes to{' '}
-				<code>@ticker</code> streams for all 9 assets in a single
+				<code>@ticker</code> streams for all {ASSET_COUNT} assets in a single
 				WebSocket connection.
 			</p>
 			<pre>

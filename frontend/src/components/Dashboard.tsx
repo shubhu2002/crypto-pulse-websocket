@@ -6,11 +6,9 @@ import { Navbar } from "./Navbar";
 import { MarketOverview } from "./MarketOverview";
 import { CoinCard } from "./CoinCard";
 import { DetailChart } from "./DetailChart";
-import { COIN_META } from "@/lib/types";
+import { COIN_META, COIN_SYMBOLS } from "@/lib/types";
 import { CURRENCIES, type Currency } from "@/lib/currency";
 import Link from "next/link";
-
-const COIN_ORDER = Object.keys(COIN_META);
 
 type SortMode = "rank" | "change" | "price" | "volume";
 
@@ -21,7 +19,7 @@ export function Dashboard() {
   const [search, setSearch] = useState("");
   const [currency, setCurrency] = useState<Currency>(CURRENCIES[0]);
 
-  const availableCoins = COIN_ORDER.filter((s) => prices[s]);
+  const availableCoins = COIN_SYMBOLS.filter((s) => prices[s]);
 
   const filteredCoins = availableCoins.filter((s) => {
     if (!search) return true;

@@ -1,7 +1,14 @@
 /* eslint-disable react-hooks/immutability */
 'use client';
 
-import { useEffect, useRef, useState, useCallback } from 'react';
+import {
+	createContext,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+	useCallback,
+} from 'react';
 import type { CoinTick, PricePoint, ServerMessage } from '@/lib/types';
 
 const WS_URL = process.env.NEXT_PUBLIC_WS_URL ?? 'wss://crypto-pulse-websocket-server.onrender.com/ws';
@@ -9,12 +16,22 @@ const MAX_HISTORY = 60;
 
 export type ConnectionStatus = 'connecting' | 'connected' | 'disconnected';
 
-export function useWebSocket() {
+interface WebSocketContextValue {
+	prices: Record<string, CoinTick>;
+	history: Record<string, PricePoint[]>;
+	status: ConnectionStatus;
+}
+
+const WebSocketContext = createContext<WebSocketContextValue | null>(null);
+
+export function WebSocketProvider({ children }: { children: React.ReactNode }) {
 	const [prices, setPrices] = useState<Record<string, CoinTick>>({});
 	const [history, setHistory] = useState<Record<string, PricePoint[]>>({});
 	const [status, setStatus] = useState<ConnectionStatus>('connecting');
 	const wsRef = useRef<WebSocket | null>(null);
 	const retriesRef = useRef(0);
+	const reconnectRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const unmountedRef = useRef(false);
 
 	const connect = useCallback(() => {
 		setStatus('connecting');
@@ -54,22 +71,38 @@ export function useWebSocket() {
 		};
 
 		ws.onclose = () => {
+			if (unmountedRef.current) return;
 			setStatus('disconnected');
 			const base = Math.min(1000 * 2 ** retriesRef.current, 30000);
 			const jitter = Math.random() * 1000;
 			retriesRef.current++;
-			setTimeout(connect, base + jitter);
+			reconnectRef.current = setTimeout(connect, base + jitter);
 		};
 
 		ws.onerror = () => {};
 	}, []);
 
 	useEffect(() => {
+		unmountedRef.current = false;
 		connect();
 		return () => {
+			unmountedRef.current = true;
+			if (reconnectRef.current) clearTimeout(reconnectRef.current);
 			wsRef.current?.close();
 		};
 	}, [connect]);
 
-	return { prices, history, status };
+	return (
+		<WebSocketContext.Provider value={{ prices, history, status }}>
+			{children}
+		</WebSocketContext.Provider>
+	);
+}
+
+export function useWebSocket() {
+	const ctx = useContext(WebSocketContext);
+	if (!ctx) {
+		throw new Error('useWebSocket must be used within a <WebSocketProvider>');
+	}
+	return ctx;
 }

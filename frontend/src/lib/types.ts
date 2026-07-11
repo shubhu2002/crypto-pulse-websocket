@@ -28,6 +28,7 @@ export type ServerMessage = TickMessage | SnapshotMessage;
 export interface CoinMeta {
   name: string;
   color: string;
+  kind?: "coin" | "commodity";
 }
 
 export const COIN_META: Record<string, CoinMeta> = {
@@ -38,6 +39,14 @@ export const COIN_META: Record<string, CoinMeta> = {
   XRPUSDT:   { name: "XRP",        color: "#00AAE4" },
   BNBUSDT:   { name: "BNB",        color: "#F3BA2F" },
   ADAUSDT:   { name: "Cardano",    color: "#0033AD" },
-  MATICUSDT: { name: "Polygon",    color: "#8247E5" },
-  PAXGUSDT:  { name: "Gold (PAXG)", color: "#FFD700" },
+  PAXGUSDT:  { name: "Gold (PAXG)", color: "#FFD700", kind: "commodity" },
 };
+
+// Single source of truth for asset counts — derived from COIN_META,
+// so adding/removing a coin updates every count across the app.
+export const COIN_SYMBOLS = Object.keys(COIN_META);
+export const ASSET_COUNT = COIN_SYMBOLS.length;
+export const COMMODITY_COUNT = Object.values(COIN_META).filter(
+  (m) => m.kind === "commodity"
+).length;
+export const COIN_COUNT = ASSET_COUNT - COMMODITY_COUNT;
